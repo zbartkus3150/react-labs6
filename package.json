@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.dev.js --open",
-    "build": "webpack --config webpack.config.prod.js"
+    "build": "webpack --config webpack.config.prod.js",
+    "mockserver": "json-server server/db.json"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -45,6 +46,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "json-server": "^0.15.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   }
