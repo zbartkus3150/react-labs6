@@ -1,7 +1,11 @@
 import React from 'react'
+import Employees from './Data'
 
 const App = () => (
-  <h1>Minimal React</h1>  
+  <div>
+    <h1>Lab 6</h1>  
+    <Employees/>
+  </div>
 )
 
 export default App
