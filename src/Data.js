@@ -10,10 +10,16 @@ class Data extends React.Component {
             isLoading: false,
             adding: false
         };
+        this.componentGet = this.componentGet.bind(this);
+        this.Addbuttonhandler= this.Addbuttonhandler.bind(this);
 	}
 
 	componentDidMount() {
-        this.setState({ isLoading: true });
+        this.componentGet();
+    }
+
+    componentGet(){
+        this.setState({ isLoading: true, adding: false });
 
         fetch('http://localhost:3004/employees')
         .then(response => response.json())
@@ -34,7 +40,7 @@ class Data extends React.Component {
             return(
                 <div>
                 Data loaded: {this.state.employees.length}<br/>
-                <AddEmployee Addbuttonhandler={this.Addbuttonhandler}/>
+                <AddEmployee Addbuttonhandler={this.Addbuttonhandler} reload={this.componentGet}/>
                 <AllEmployees employee={this.state.employees}/>
                 </div>
             )
