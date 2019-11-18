@@ -8,10 +8,12 @@ class Data extends React.Component {
 		this.state = {
             employees: [],
             isLoading: false,
-            adding: false
+            adding: false,
+            deletedID: ""
         };
         this.componentGet = this.componentGet.bind(this);
         this.Addbuttonhandler= this.Addbuttonhandler.bind(this);
+        this.componentDelete = this.componentDelete.bind(this);
 	}
 
 	componentDidMount() {
@@ -28,6 +30,17 @@ class Data extends React.Component {
         
     }
 
+    componentDelete(userId){
+        this.setState({deletedID:userId});
+        fetch('http://localhost:3004/employees/'+userId, {
+        method: 'DELETE',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify({id:this.state.id})
+        })
+        .then(()=>this.setState({deletedID:""}))
+        .then(this.componentGet)
+      }
+
     Addbuttonhandler = () =>{
         this.setState({adding: !this.state.adding});
     }
@@ -41,7 +54,7 @@ class Data extends React.Component {
                 <div>
                 Data loaded: {this.state.employees.length}<br/>
                 <AddEmployee Addbuttonhandler={this.Addbuttonhandler} reload={this.componentGet}/>
-                <AllEmployees employee={this.state.employees}/>
+                <AllEmployees employee={this.state.employees} delete={this.componentDelete} delID={this.state.deletedID}/>
                 </div>
             )
         }
@@ -49,7 +62,7 @@ class Data extends React.Component {
             <div>
                 Data loaded: {this.state.employees.length}<br/>
                 <button onClick={this.Addbuttonhandler} style={{padding:'5px', margin:'10px'}}>Add employee</button>
-                <AllEmployees employee={this.state.employees}/>
+                <AllEmployees employee={this.state.employees} delete={this.componentDelete} delID={this.state.deletedID}/>
             </div>
 
 		)
