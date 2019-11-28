@@ -15,10 +15,10 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/">
-            <PageEmployee/>
+            <Employees/>
         </Route>
         <Route exact path="/new">
-            <div>Test</div>
+            <PageEmployee/>
         </Route>
       </Switch>
     </Router>
