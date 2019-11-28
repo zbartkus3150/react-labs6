@@ -1,3 +1,4 @@
+import { withRouter } from "react-router-dom";
 import React from 'react'
 import PageEmployeesList  from './PageEmployeesList '
 import PageEmployee from './PageEmployee';
@@ -49,7 +50,7 @@ class Data extends React.Component {
         if (this.state.isLoading) {
             return <p>Loading ...</p>;
         }
-        if(this.state.adding){
+        /*if(this.state.adding){
             return(
                 <div>
                 Data loaded: {this.state.employees.length}<br/>
@@ -57,7 +58,7 @@ class Data extends React.Component {
                 <PageEmployeesList  employee={this.state.employees} delete={this.componentDelete} delID={this.state.deletedID}/>
                 </div>
             )
-        }
+        }*/
 		return (
             <div>
                 Data loaded: {this.state.employees.length}<br/>
@@ -69,4 +70,4 @@ class Data extends React.Component {
 	}
 }
 
-export default Data 
+export default withRouter(Data);
