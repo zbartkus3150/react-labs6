@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class PageEmployee extends React.Component {
     constructor(props){
@@ -80,8 +80,12 @@ class PageEmployee extends React.Component {
                             <option value="true">true</option>
                         </select>
                     </p>
-                    <button onClick={this.Submitbuttonhandler} >Submit</button>
-                    <button onClick={this.props.Addbuttonhandler} >Cancel</button>
+                    <button style={{padding:'5px', margin:'10px'}} onClick={this.Submitbuttonhandler} >Submit</button>
+                    <Link to="/">
+                        <button style={{padding:'5px', margin:'10px'}}>
+                            Cancel
+                        </button>
+                    </Link>
                 </form>}
                 <br/>
             </div>

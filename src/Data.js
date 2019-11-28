@@ -1,7 +1,6 @@
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import React from 'react'
 import PageEmployeesList  from './PageEmployeesList '
-import PageEmployee from './PageEmployee';
 class Data extends React.Component {
 
 	constructor(props) {
@@ -9,11 +8,9 @@ class Data extends React.Component {
 		this.state = {
             employees: [],
             isLoading: false,
-            adding: false,
             deletedID: ""
         };
         this.componentGet = this.componentGet.bind(this);
-        this.Addbuttonhandler= this.Addbuttonhandler.bind(this);
         this.componentDelete = this.componentDelete.bind(this);
 	}
 
@@ -22,7 +19,7 @@ class Data extends React.Component {
     }
 
     componentGet(){
-        this.setState({ isLoading: true, adding: false });
+        this.setState({ isLoading: true });
 
         fetch('http://localhost:3004/employees')
         .then(response => response.json())
@@ -42,28 +39,20 @@ class Data extends React.Component {
         .then(this.componentGet)
       }
 
-    Addbuttonhandler = () =>{
-        this.setState({adding: !this.state.adding});
-    }
 
     render() {
         if (this.state.isLoading) {
             return <p>Loading ...</p>;
         }
-        /*if(this.state.adding){
-            return(
-                <div>
-                Data loaded: {this.state.employees.length}<br/>
-                <PageEmployee Addbuttonhandler={this.Addbuttonhandler} reload={this.componentGet}/>
-                <PageEmployeesList  employee={this.state.employees} delete={this.componentDelete} delID={this.state.deletedID}/>
-                </div>
-            )
-        }*/
 		return (
             <div>
                 Data loaded: {this.state.employees.length}<br/>
-                <button onClick={this.Addbuttonhandler} style={{padding:'5px', margin:'10px'}}>Add employee</button>
                 <PageEmployeesList  employee={this.state.employees} delete={this.componentDelete} delID={this.state.deletedID}/>
+                <Link to="/new">
+                    <button style={{padding:'5px', margin:'10px'}}>
+                        Create new employee
+                    </button>
+                </Link>
             </div>
 
 		)
