@@ -32,7 +32,7 @@ class PageEmployee extends React.Component {
                 "email": this.state.email
               }),
         }).then(() => {this.setState({ IsSaving: false })
-        }).then(()=>this.props.reload());
+        }).then(() => this.props.history.push("/"));
     }
 
     Changehandler(event){
@@ -50,6 +50,7 @@ class PageEmployee extends React.Component {
                             name='name' 
                             type='text' 
                             onChange={this.Changehandler}
+                            required="required"
                         />
                     </p>
                     <p>Age: <br/>
@@ -58,6 +59,7 @@ class PageEmployee extends React.Component {
                             type='number'
                             min='0' 
                             onChange={this.Changehandler}
+                            required="required"
                         />
                     </p>
                     <p>Company: 
@@ -65,6 +67,7 @@ class PageEmployee extends React.Component {
                             name='company'
                             type='text' 
                             onChange={this.Changehandler}
+                            required="required"
                         />
                     </p>
                     <p>Email: 
@@ -72,15 +75,17 @@ class PageEmployee extends React.Component {
                             name='email'
                             type='text' 
                             onChange={this.Changehandler}
+                            required="required"
                         />
                     </p>
                     <p>Is Active: 
-                        <select name='isActive' onChange={this.Changehandler}>
+                        <select name='isActive' onChange={this.Changehandler} required="required">
                             <option value="false">false</option>
                             <option value="true">true</option>
+                            
                         </select>
                     </p>
-                    <button style={{padding:'5px', margin:'10px'}} onClick={this.Submitbuttonhandler} >Submit</button>
+                    <button onClick={this.Submitbuttonhandler} style={{padding:'5px', margin:'10px'}} >Submit</button>
                     <Link to="/">
                         <button style={{padding:'5px', margin:'10px'}}>
                             Cancel
