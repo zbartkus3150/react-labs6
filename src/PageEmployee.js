@@ -1,6 +1,6 @@
 import React from 'react'
 
-class AddEmployee extends React.Component {
+class PageEmployee extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -88,4 +88,4 @@ class AddEmployee extends React.Component {
     }
 }
 
-export default AddEmployee
+export default PageEmployee

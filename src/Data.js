@@ -1,6 +1,6 @@
 import React from 'react'
-import AllEmployees from './AllEmployees'
-import AddEmployee from './AddEmployee';
+import PageEmployeesList  from './PageEmployeesList '
+import PageEmployee from './PageEmployee';
 class Data extends React.Component {
 
 	constructor(props) {
@@ -53,8 +53,8 @@ class Data extends React.Component {
             return(
                 <div>
                 Data loaded: {this.state.employees.length}<br/>
-                <AddEmployee Addbuttonhandler={this.Addbuttonhandler} reload={this.componentGet}/>
-                <AllEmployees employee={this.state.employees} delete={this.componentDelete} delID={this.state.deletedID}/>
+                <PageEmployee Addbuttonhandler={this.Addbuttonhandler} reload={this.componentGet}/>
+                <PageEmployeesList  employee={this.state.employees} delete={this.componentDelete} delID={this.state.deletedID}/>
                 </div>
             )
         }
@@ -62,7 +62,7 @@ class Data extends React.Component {
             <div>
                 Data loaded: {this.state.employees.length}<br/>
                 <button onClick={this.Addbuttonhandler} style={{padding:'5px', margin:'10px'}}>Add employee</button>
-                <AllEmployees employee={this.state.employees} delete={this.componentDelete} delID={this.state.deletedID}/>
+                <PageEmployeesList  employee={this.state.employees} delete={this.componentDelete} delID={this.state.deletedID}/>
             </div>
 
 		)
